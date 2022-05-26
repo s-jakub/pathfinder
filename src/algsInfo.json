@@ -1,0 +1,31 @@
+{
+    "BFS": {
+        "algName": "Breadth First Search",
+        "algDesc": "Algorytm gwarantuje znalezienie najkrótszej trasy oraz nie wspiera wag"
+    },
+    "DFS": {
+        "algName": "Depth First Search",
+        "algDesc": "Algorytm nie gwarantuje znalezienia najkrótszej trasy oraz nie wspiera wag"
+    },
+    "Dijkstra": {
+        "algName": "Dijkstra Search",
+        "algDesc": "Algorytm gwarantuje znalezienie najkrótszej trasy oraz wspiera wagi"
+    },
+    "A* Search": {
+        "algName": "A* Search",
+        "algDesc": "Algorytm gwarantuje znalezienie najkrótszej trasy oraz wspiera wag"
+    },
+    "Greedy Best First Search": {
+        "algName": "Greedy Best First Search",
+        "algDesc": "Algorytm nie gwarantuje znalezieniea najkrótszej trasy oraz wspiera wagi"
+    },
+    "JPS": {
+        "algName": "Jump Point Search",
+        "algDesc": "Algorytm gwarantuje znalezienie najkrótszej trasy oraz nie wspiera wag"
+    },
+    "Bidirectional Dijkstra": {
+        "algName": "Bidirectional Dijkstra",
+        "algDesc": "Algorytm gwarantuje znalezienie najkrótszej trasy oraz wspiera wagi"
+    }
+}
+
