@@ -50,7 +50,7 @@ function Navbar() {
       case 'Dijkstra': dijkstraAlgorithm(mainConfig.mainArray, mainConfig.startPoint, dispatch, isActiveBeetwenPointFlag).then(() => setIsAlgorithmRunning(false)); break;
       case 'A* Search': AStarSearch(mainConfig.mainArray, mainConfig.startPoint, mainConfig.endPoint, dispatch, isActiveBeetwenPointFlag, mainConfig.betweenPoint).then(() => setIsAlgorithmRunning(false)); break;
       case 'Greedy Best First Search': greedyBestFirstSearch(mainConfig.mainArray, mainConfig.startPoint, mainConfig.endPoint, dispatch, isActiveBeetwenPointFlag, mainConfig.betweenPoint).then(() => setIsAlgorithmRunning(false)); break;
-      case 'JPS': jumpPointSearch(mainConfig.mainArray, mainConfig.startPoint, mainConfig.endPoint, dispatch, isActiveBeetwenPointFlag, mainConfig.betweenPoint).then(() => setIsAlgorithmRunning(false)); break;
+      // case 'JPS': jumpPointSearch(mainConfig.mainArray, mainConfig.startPoint, mainConfig.endPoint, dispatch, isActiveBeetwenPointFlag, mainConfig.betweenPoint).then(() => setIsAlgorithmRunning(false)); break;
       case 'Bidirectional Dijkstra': bidirectionalDijkstraAlgorithm(mainConfig.mainArray, mainConfig.startPoint, mainConfig.endPoint, dispatch, isActiveBeetwenPointFlag, mainConfig.betweenPoint).then(() => setIsAlgorithmRunning(false)); break;
       default: alert('Najpierw musisz wybrać algorytm')
     }
@@ -99,10 +99,10 @@ function Navbar() {
       <div className='playBtn'>
 
         <Button theme={playTheme} text={`${algName ? `Uruchom ${algName}` : 'Wybierz algorytm'}`} isDisabled={isAlgorithmRunning} callback={() => {
+            setStartAlgorithm(algName)
 
-            if(!isAlgorithmRunning) {
+            if(!isAlgorithmRunning && algName) {
               dispatch(clear({firstVal: 'isPath', secondVal: 'isSearch'}))
-              setStartAlgorithm(algName)
               setIsAlgorithmRunning(true);
             } 
 
@@ -133,13 +133,13 @@ function Navbar() {
             <BtnsWrapper>
               <Dropdown text="Wybierz algorytm">
 
-                <Button text={"BFS"} theme={dropdownTheme} isDisabled={isAlgorithmRunning} callback={() => setAlgName('BFS')}/>
-                <Button text="DFS" theme={dropdownTheme} isDisabled={isAlgorithmRunning} callback={() => setAlgName('DFS')}/>
-                <Button text="Dijkstra" theme={dropdownTheme} isDisabled={isAlgorithmRunning} callback={() => setAlgName('Dijkstra')}/>
-                <Button text="A* Search" theme={dropdownTheme} isDisabled={isAlgorithmRunning} callback={() => setAlgName('A* Search')}/>
-                <Button text="Greedy Best First Search" theme={dropdownTheme} isDisabled={isAlgorithmRunning} callback={() => setAlgName('Greedy Best First Search')}/>
-                <Button text="JPS" theme={dropdownTheme} isDisabled={isAlgorithmRunning} callback={() => setAlgName('JPS')}/>
-                <Button text="Bidirectional Dijkstra" theme={dropdownTheme} isDisabled={isAlgorithmRunning} callback={() => setAlgName('Bidirectional Dijkstra')}/>
+                <Button text={"BFS"} theme={dropdownTheme} isDisabled={isAlgorithmRunning} callback={() => dispatch(setAlgName('BFS'))}/>
+                <Button text="DFS" theme={dropdownTheme} isDisabled={isAlgorithmRunning} callback={() => dispatch(setAlgName('DFS'))}/>
+                <Button text="Dijkstra" theme={dropdownTheme} isDisabled={isAlgorithmRunning} callback={() => dispatch(setAlgName('Dijkstra'))}/>
+                <Button text="A* Search" theme={dropdownTheme} isDisabled={isAlgorithmRunning} callback={() => dispatch(setAlgName('A* Search'))}/>
+                <Button text="Greedy Best First Search" theme={dropdownTheme} isDisabled={isAlgorithmRunning} callback={() => dispatch(setAlgName('Greedy Best First Search'))}/>
+                {/* <Button text="JPS" theme={dropdownTheme} isDisabled={isAlgorithmRunning} callback={() => setAlgName('JPS')}/> */}
+                <Button text="Bidirectional Dijkstra" theme={dropdownTheme} isDisabled={isAlgorithmRunning} callback={() => dispatch(setAlgName('Bidirectional Dijkstra'))}/>
 
               </Dropdown>
 
@@ -185,10 +185,10 @@ function Navbar() {
             <div className='playBtn'>
               <Button theme={playTheme} text={`Uruchom ${algName ? algName : 'Algorytm'}`} isDisabled={isAlgorithmRunning} callback={() =>{ 
                 setIsHamburgerClicked(false);
+                setStartAlgorithm(algName)
                 
-                if(!isAlgorithmRunning) {
+                if(!isAlgorithmRunning && algName) {
                   dispatch(clear({firstVal: 'isPath', secondVal: 'isSearch'}))
-                  setStartAlgorithm(algName)
                   setIsAlgorithmRunning(true);
                 } 
               }}/>
